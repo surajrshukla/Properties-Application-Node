@@ -8,7 +8,7 @@ const isEmpty = require('lodash').isEmpty;
 router.post("/register", (req, res) => {
     const db = req.app.locals.db;
 
-    req.body.password = cryptPassword(req.body.password);
+    req.body.formData.password = cryptPassword(req.body.formData.password);
 
     db.collection("user_master").insertOne(req.body, (err, result) => {
         let return_data = {};
