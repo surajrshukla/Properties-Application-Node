@@ -10,7 +10,7 @@ router.post("/register", (req, res) => {
 
     req.body.formData.password = cryptPassword(req.body.formData.password);
 
-    db.collection("user_master").insertOne(req.body, (err, result) => {
+    db.collection("user_master").insertOne(req.body.formData, (err, result) => {
         let return_data = {};
         if (err) {
             return_data = { ...HttpResponse.InternalServerError }
