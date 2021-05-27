@@ -18,7 +18,7 @@ router.post("/login", (req, res) => {
         }
         const passwordResult = comparePassword(req.body.formData.password, result.password);
         if (passwordResult) {
-            jwt_sign({ role: result.role, user_id: result._id.toString() }, (err, token) => {
+            jwt_sign({ role: result.user_type, user_id: result._id.toString() }, (err, token) => {
                 if (err) {
                     return_data = { ...HttpResponse.InternalServerError }
                     return res.send(return_data);

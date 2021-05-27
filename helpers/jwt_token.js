@@ -4,10 +4,10 @@ const cypherPassword = require("./helpers").CIPHER_PASSWORD;
 const jwt_paths = expressJwt({
     secret: cypherPassword,
     algorithms: ['HS256'],
-    resultProperty: 'locals.user'
+    userProperty: 'payload'
 }).unless({ path: ['/login_services/login', '/register_services/register'] });
 
-const jwt_sign = (user, cb) => jwt.sign({ role: user.user_type, user_id: user.user_id }, cypherPassword, { algorithm: 'HS256'}, (err, token) => {
+const jwt_sign = (user, cb) => jwt.sign({ role: user.role, user_id: user.user_id }, cypherPassword, { algorithm: 'HS256' }, (err, token) => {
     if (err) {
         return cb(err);
     }

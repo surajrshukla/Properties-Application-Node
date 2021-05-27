@@ -16,8 +16,8 @@ const fileEnv = dotenv.config({ path: finalPath });
 // Request routes
 const indexRouter = require('./routes/index');
 const loginServices = require('./routes/login_services');
-const userServices = require('./routes/user_services');
 const registerServices = require('./routes/register_services');
+const propertyServices = require('./routes/property_services');
 
 
 const jwt_paths = require("./helpers/jwt_token").jwt_paths;
@@ -43,17 +43,16 @@ app.use(jwt_paths);
 
 app.use('/', indexRouter);
 app.use('/login_services', loginServices);
-app.use('/user_services', userServices);
 app.use('/register_services', registerServices);
-
+app.use('/property_services', propertyServices);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
