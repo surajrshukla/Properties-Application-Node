@@ -7,6 +7,12 @@ const jwt_sign = require('../helpers/jwt_token').jwt_sign
 
 router.post("/login", (req, res) => {
     const db = req.app.locals.db;
+    if (isEmpty(req.body.formData.email) || isEmpty(req.body.formData.password)) {
+        let return_data = {};
+        return_data = { ...HttpResponse.WrongCredentials }
+        return res.send(return_data);
+    }
+
     db.collection("user_master").findOne({ email: req.body.formData.email }, (err, result) => {
         let return_data = {};
         if (err) {

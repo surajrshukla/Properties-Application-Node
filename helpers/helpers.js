@@ -1,10 +1,10 @@
 const API_URL = process.env.API_URL;
 const CIPHER_PASSWORD = process.env.CIPHER_PASSWORD;
 const SALT = process.env.SALT;
-const LIMIT = 10;
+const IMAGE_PATH = process.env.IMAGE_PATH
 
 module.exports = {
     API_URL,
     CIPHER_PASSWORD,
-    SALT
+    SALT, IMAGE_PATH
 }
